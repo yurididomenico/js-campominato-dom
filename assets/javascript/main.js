@@ -106,6 +106,31 @@ function creaQuad()
 }
 
 
+//funzione genera bombe
+function generaBombe()
+{
+    //Vettore vuoto
+    let arrayBombe = [];
+    
+    //Ciclo genera 16 numeri random con controllo duplicati
+    for(let i=0; i<16; i++)
+    {
+        let numeroRandomico = Math.floor(Math.random() * 17) + 1;
+        
+        if(!arrayBombe.includes(numeroRandomico))
+        {
+            arrayBombe.push(numeroRandomico);
+        }
+        else
+        {
+            i--;
+        }
+
+    }
+    console.log(arrayBombe);
+
+    
+}
 
 
 
