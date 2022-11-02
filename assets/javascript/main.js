@@ -24,7 +24,6 @@ let quadrato;
 
 
 
-
 function gioco()
 {
     //Controllo quale opzione viene scelta
@@ -48,8 +47,11 @@ function gioco()
         griglia.innerHTML = "Selezionare una difficoltà.";   
     }
 
-    
+    //Creazione vettore bombe (16)
+    let vettoreBombe = generaBombe(numDifficolta);
 
+
+    // console.log(`Vettore: ${vettoreBombe}`)
     //creazione 100 div - con evento click
     for(let i=0; i<numDifficolta; i++)
     {
@@ -62,18 +64,26 @@ function gioco()
         quadrato.classList.add('justify-content-center');
         quadrato.classList.add('align-items-center');
 
+        
         //Attivo i quadrati
         quadrato.addEventListener('click', function()
         {
             console.log(i+1);
-            this.classList.toggle('active');
+            this.classList.toggle('ms-active');
+
+            if(vettoreBombe.includes(parseInt(i+1)))
+            {
+                console.log("Hai perso");
+                this.classList.add('bomba')
+            }
+            
         })
 
         griglia.append(quadrato);
     }
 
+    document.getElementById('test').innerText = `Vettore: ${vettoreBombe}`;
 
-    generaBombe(numDifficolta);
 }
 
 
@@ -115,13 +125,14 @@ function creaQuad()
 //funzione genera bombe
 function generaBombe(difficolta)
 {
+    
     //Vettore vuoto
     let arrayBombe = [];
     
     //Ciclo genera 16 numeri random con controllo duplicati
     for(let i=0; i<16; i++)
     {
-        let numeroRandomico = Math.floor(Math.random() * difficolta) + 1;
+        let numeroRandomico = parseInt(Math.floor(Math.random() * difficolta) + 1);
         
         if(!arrayBombe.includes(numeroRandomico))
         {
