@@ -49,7 +49,9 @@ function gioco()
 
     //Creazione vettore bombe (16)
     let vettoreBombe = generaBombe(numDifficolta);
-
+    let stampaRisultato = document.getElementById('stampaRisultato');
+    let test = document.getElementById('test');
+    let score = 0;
 
     // console.log(`Vettore: ${vettoreBombe}`)
     //creazione 100 div - con evento click
@@ -65,24 +67,31 @@ function gioco()
         quadrato.classList.add('align-items-center');
 
         
+        
         //Attivo i quadrati
         quadrato.addEventListener('click', function()
         {
             console.log(i+1);
-            this.classList.toggle('ms-active');
+            this.classList.add('ms-active');
 
             if(vettoreBombe.includes(parseInt(i+1)))
             {
                 console.log("Hai perso");
-                this.classList.add('bomba')
+                this.classList.add('bomba');
             }
-            
-        })
+            else
+            {
+                score++;
+            }
 
+            stampaRisultato.innerText = `Score: ${score}`;
+        })
         griglia.append(quadrato);
     }
 
-    document.getElementById('test').innerText = `Vettore: ${vettoreBombe}`;
+    stampaRisultato.innerText = `Score: ${score}`;
+    test.innerText = `Vettore: ${vettoreBombe}`;
+
 
 }
 
