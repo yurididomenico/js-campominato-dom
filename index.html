@@ -27,13 +27,12 @@
     <div class="d-flex">
       <form>
         <button onclick="refresh()" class="btnHeight p-2 mx-3">Reset</button>
-        <select onclick="gioco(); return false" id="selezioneDifficolta" class="btnHeight border border-2 border-dark me-3">
-            <option value="" id="selezioneDifficoltaVuota">Difficoltà</option>
+        <select id="selezioneDifficolta" class="btnHeight border border-2 border-dark">
             <option value=1>Easy</option>
             <option value=2>Normal</option>
             <option value=3>Hard</option>
         </select>
-        <!-- <button onclick="gioco(); return false" class="btnHeight p-2 mx-3">Gioca!</button> -->
+        <button onclick="gioco(); return false" class="btnHeight p-2 mx-3">Gioca!</button>
       </form>
     </div>
   </header>
@@ -42,7 +41,7 @@
 
     </div>
 
-    <button onclick="generaBombe()">BombeTest</button>
+    
 
   </main>
 

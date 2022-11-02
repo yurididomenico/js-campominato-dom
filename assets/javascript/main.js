@@ -21,8 +21,7 @@ let griglia = document.getElementById('areaGioco');
 // Definisco variabile per il quadrato
 let quadrato;
 
-//Definisco variabile reset in caso di valore nullo sulla select della difficoltà
-let selezioneDifficoltaVuota = document.getElementById('selezioneDifficoltaVuota');
+
 
 
 
@@ -46,15 +45,10 @@ function gioco()
     }
     else
     {
-        // alert("Selezionare una difficoltà.");
-        griglia.innerHTML = "Selezionare una difficoltà.";
-        numDifficolta = 0;
+        griglia.innerHTML = "Selezionare una difficoltà.";   
     }
 
-    selezioneDifficoltaVuota.addEventListener('click', function()
-    {
-        refresh();
-    })
+    
 
     //creazione 100 div - con evento click
     for(let i=0; i<numDifficolta; i++)
@@ -78,8 +72,15 @@ function gioco()
         griglia.append(quadrato);
     }
 
-    
+
+    generaBombe(numDifficolta);
 }
+
+
+
+
+
+
 
 //Funzione genera un div
 function creaQuad()
@@ -101,13 +102,18 @@ function creaQuad()
         div.classList.add('gridBoxWidthHard');
     }
 
-
     return div;
 }
 
 
+
+
+
+
+
+
 //funzione genera bombe
-function generaBombe()
+function generaBombe(difficolta)
 {
     //Vettore vuoto
     let arrayBombe = [];
@@ -115,7 +121,7 @@ function generaBombe()
     //Ciclo genera 16 numeri random con controllo duplicati
     for(let i=0; i<16; i++)
     {
-        let numeroRandomico = Math.floor(Math.random() * 17) + 1;
+        let numeroRandomico = Math.floor(Math.random() * difficolta) + 1;
         
         if(!arrayBombe.includes(numeroRandomico))
         {
@@ -127,9 +133,9 @@ function generaBombe()
         }
 
     }
-    console.log(arrayBombe);
 
-    
+
+    return arrayBombe;
 }
 
 
