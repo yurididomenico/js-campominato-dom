@@ -1,0 +1,53 @@
+/* |||||||||| AREA FLEX |||||||||| */
+.flex-mode
+{
+  display: flex;
+}
+.wrap
+{
+  flex-wrap: wrap;
+}
+.d-row
+{
+  flex-direction: row;
+}
+.d-col
+{
+  flex-direction: column;
+}
+.justify-start
+{
+  justify-content: flex-start;
+}
+.align-start
+{
+  align-items: flex-start;
+}
+.justify-center
+{
+  justify-content: center;
+}
+.align-center
+{
+  align-items: center;
+}
+.justify-end
+{
+  justify-content: flex-end;
+}
+.align-end
+{
+  align-items: flex-end;
+}
+.s-between
+{
+  justify-content: space-between;
+}
+.s-around
+{
+  justify-content: space-around;
+}
+.align-content-center
+{
+  align-content: center;
+}
