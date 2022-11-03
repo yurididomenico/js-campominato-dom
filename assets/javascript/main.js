@@ -22,8 +22,6 @@ let griglia = document.getElementById('areaGioco');
 let quadrato;
 
 
-
-
 function gioco()
 {
     //Controllo quale opzione viene scelta
@@ -52,6 +50,9 @@ function gioco()
     let stampaRisultato = document.getElementById('stampaRisultato');
     let test = document.getElementById('test');
     let score = 0;
+    let arrayBox = [];
+    
+    
 
     // console.log(`Vettore: ${vettoreBombe}`)
     //creazione 100 div - con evento click
@@ -65,9 +66,14 @@ function gioco()
         quadrato.classList.add('d-flex');
         quadrato.classList.add('justify-content-center');
         quadrato.classList.add('align-items-center');
+        
+        // appendo il quadrato all'area di gioco
+        griglia.append(quadrato);
 
         
-        
+        arrayBox.push(quadrato);
+
+
         //Attivo i quadrati
         quadrato.addEventListener('click', function()
         {
@@ -77,20 +83,36 @@ function gioco()
             if(vettoreBombe.includes(parseInt(i+1)))
             {
                 console.log("Hai perso");
-                this.classList.add('bomba');
+                // this.classList.add('bomba');
+                alert("Hai perso!");
+
+                
+                for(let z=0; z<arrayBox.length; z++)
+                {
+                    if(vettoreBombe.includes(parseInt(arrayBox[z].innerText)))
+                    {
+                        arrayBox[z].classList.add('bomba')
+                    }
+                }
             }
             else
             {
                 score++;
             }
-
+            
             stampaRisultato.innerText = `Score: ${score}`;
         })
-        griglia.append(quadrato);
+        
+        
+    
     }
+    
+
+    
 
     stampaRisultato.innerText = `Score: ${score}`;
-    test.innerText = `Vettore: ${vettoreBombe}`;
+    
+    
 
 
 }
